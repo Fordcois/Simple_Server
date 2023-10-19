@@ -14,6 +14,19 @@ jobs:
       - name: Check out the code
         uses: actions/checkout@v3 # This is a reference to some code to run
 
+      - name: Cache pipenv
+        uses: actions/cache@v2
+        with:
+          path: ${{ env.HOME }}/.local/share/virtualenvs
+          key: pipenv-${{ runner.os }}-${{ hashFiles('**/Pipfile.lock') }}
+        restore-keys: |
+          pipenv-${{ runner.os }}-
+
+      - name: Install dependencies
+        run: |
+          pip install pipenv
+          pipenv install --dev
+
       # This step installs the Python version we want
       - name: Set up Python 3.11
         uses: actions/setup-python@v4
