@@ -11,8 +11,8 @@ jobs:
 
     steps:
       - name: Print Python executable path
-      run: |
-        echo "Python 3.11 path: $(which python3.11)"
+        run: |
+          echo "Python 3.11 path: $(which python3.11)"
 
       # Each step has a name, some code, and some options
       - name: Check out the code
