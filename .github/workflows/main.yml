@@ -10,6 +10,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Print Python executable path
+      run: |
+        echo "Python 3.11 path: $(which python3.11)"
+
       # Each step has a name, some code, and some options
       - name: Check out the code
         uses: actions/checkout@v3 # This is a reference to some code to run
