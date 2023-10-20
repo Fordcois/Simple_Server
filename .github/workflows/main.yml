@@ -10,10 +10,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Print Python executable path
-        run: |
-          echo "Python 3.11 path: $(which python3.11)"
-
       # Each step has a name, some code, and some options
       - name: Check out the code
         uses: actions/checkout@v3 # This is a reference to some code to run
@@ -23,10 +19,14 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: 3.11
-
+    
+      - name: Print Python executable path
+        run: |
+          echo "Python 3.11 path: $(which python3.11)"
+          
       # This step installs pip, pipenv, and our dependencies
       - name: Install dependencies
-        run: | # Note that there's no reference here — just commands to run
+        run: |
           python -m pip install --upgrade pip
           pip install pipenv
           pipenv install --dev
